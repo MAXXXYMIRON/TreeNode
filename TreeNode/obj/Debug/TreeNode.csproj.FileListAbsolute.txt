@@ -1,0 +1,7 @@
+C:\Users\MAXXXYMIRON\Desktop\ПАРЫ 3 курс\САОД\trees\TreeNode\TreeNode\bin\Debug\TreeNode.exe.config
+C:\Users\MAXXXYMIRON\Desktop\ПАРЫ 3 курс\САОД\trees\TreeNode\TreeNode\bin\Debug\TreeNode.exe
+C:\Users\MAXXXYMIRON\Desktop\ПАРЫ 3 курс\САОД\trees\TreeNode\TreeNode\bin\Debug\TreeNode.pdb
+C:\Users\MAXXXYMIRON\Desktop\ПАРЫ 3 курс\САОД\trees\TreeNode\TreeNode\obj\Debug\TreeNode.csprojAssemblyReference.cache
+C:\Users\MAXXXYMIRON\Desktop\ПАРЫ 3 курс\САОД\trees\TreeNode\TreeNode\obj\Debug\TreeNode.csproj.CoreCompileInputs.cache
+C:\Users\MAXXXYMIRON\Desktop\ПАРЫ 3 курс\САОД\trees\TreeNode\TreeNode\obj\Debug\TreeNode.exe
+C:\Users\MAXXXYMIRON\Desktop\ПАРЫ 3 курс\САОД\trees\TreeNode\TreeNode\obj\Debug\TreeNode.pdb
