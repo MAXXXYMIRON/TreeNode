@@ -10,73 +10,52 @@ namespace TreeNode
     {
         static void Main(string[] args)
         {
-            TreeNode<int> node = new TreeNode<int>(1,//Данные корня
-                new TreeNode<int>(2, //Данные левого потомка корня
-                    new TreeNode<int>(4), //Данные левого потомка левого потомка корня
-                    new TreeNode<int>(5)), //Данные правого потомка левого потомка корня
-                new TreeNode<int>(3)); //Данные правого потомка корня
+            //Создадим дерева с английским алфавитом
+            TreeNode<char> liter = new TreeNode<char>('A');
 
-            Console.WriteLine(AccessToData(node, 0, 0));//Данные корня
-            Console.WriteLine(AccessToData(node, 1, 1));//Данные правого потомка корня
-            Console.WriteLine(AccessToData(node, 1, 0));//Данные левого потомка корня
-            Console.WriteLine(AccessToData(node, 2, 1));//Данные правого потомка левого потомка корня
-            Console.WriteLine(AccessToData(node, 2, 0));//Данные левого потомка левого потомка корня
+            liter.Left = new TreeNode<char>('B');
+            liter.Right = new TreeNode<char>('C');
 
-            //Удалить дерево
-            node.Delete();
-            node = null;
+            liter.Left.Left = new TreeNode<char>('D');
+            liter.Left.Right = new TreeNode<char>('E');
+            liter.Right.Left = new TreeNode<char>('F');
+            liter.Right.Right = new TreeNode<char>('G');
+
+            liter.Left.Left.Left = new TreeNode<char>('H');
+            liter.Left.Left.Right = new TreeNode<char>('I');
+            liter.Left.Right.Left = new TreeNode<char>('J');
+            liter.Left.Right.Right = new TreeNode<char>('K');
+            liter.Right.Left.Left = new TreeNode<char>('L');
+            liter.Right.Left.Right = new TreeNode<char>('M');
+            liter.Right.Right.Left = new TreeNode<char>('N');
+            liter.Right.Right.Right = new TreeNode<char>('O');
+
+            liter.Left.Left.Left.Left = new TreeNode<char>('P');
+            liter.Left.Left.Left.Right = new TreeNode<char>('Q');
+            liter.Left.Left.Right.Left = new TreeNode<char>('R');
+            liter.Left.Left.Right.Right = new TreeNode<char>('S');
+            liter.Left.Right.Left.Left = new TreeNode<char>('T');
+            liter.Left.Right.Left.Right = new TreeNode<char>('U');
+            liter.Left.Right.Right.Left = new TreeNode<char>('V');
+            liter.Left.Right.Right.Right = new TreeNode<char>('W');
+            liter.Right.Left.Left.Left = new TreeNode<char>('X');
+            liter.Right.Left.Left.Right = new TreeNode<char>('Y');
+            liter.Right.Left.Right.Left = new TreeNode<char>('Z');
+
+            Console.WriteLine($"Кол-во листов дерева = {TreesTraversals<char>.CountLeaf(liter)}\n");
+            Console.WriteLine($"Глубина дерева = {TreesTraversals<char>.Depth(liter)}\n");
+            Console.WriteLine($"Горизонтальная печать дерева - \n");
+            TreesTraversals<char>.PrintTreeH(liter, 0);
+
+            //Скопируем дерево
+            TreeNode<char> literCopy = TreesTraversals<char>.CopyTree(liter);
+            //Удалим старое дерево
+            TreesTraversals<char>.DeleteTree(ref liter);
+            Console.WriteLine($"Удаленное дерево - {liter}\n");
+            Console.WriteLine($"Вертикальная печать скопрованного дерева - \n");
+            TreesTraversals<char>.PrintTreeV(literCopy);
 
             Console.ReadKey();
-        }
-
-
-
-        //Доступ к элементу дерева
-        //по указанному уковню и номеру элемента в данном уровне
-        //нумерация с нуля
-        static T? AccessToData<T> (TreeNode<T> root, int level, int numEl) where T : struct
-        {
-            //Определим кол-во эл в уровне
-            int countOfEl = (int)Math.Pow(2, level);
-            //выход если номер эл больше кол-ва эл в уровне
-            if (numEl >= countOfEl) return null;
-
-            //Объявим и определим список с направлением поиска элемента
-            List<bool> directionSearch = new List<bool>();
-            while (countOfEl > 1)
-            {
-                countOfEl /= 2;
-                //При true направление влево
-                if (numEl < countOfEl) directionSearch.Add(true);
-                //При true направление вправо
-                else directionSearch.Add(false);
-            }
-
-            //Пройдем дерево по направлению
-            foreach (bool direction in directionSearch)
-            {
-                //Влево
-                if(direction == true)
-                {
-                    if (root.Left != null)
-                    {
-                        //Переместим ссылку на левого потомка
-                        root = root.Left;
-                    }
-                    else return null;
-                }
-                //Вправо
-                else
-                {
-                    if (root.Right != null)
-                    {
-                        //Переместим ссылку на правого потомка
-                        root = root.Right;
-                    }
-                    else return null;
-                }
-            }
-            return root.Data;
         }
     }
 }
